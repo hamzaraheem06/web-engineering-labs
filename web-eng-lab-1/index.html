@@ -4,96 +4,297 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Engineering Lab 1</title>
+
+    <title>Kirkversy | A Digital Memorial</title>
 
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        background: #f4f7fb;
-        color: #1f2937;
-        text-align: center;
         margin: 0;
-        padding: 60px 20px;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background: #0b1220;
+        color: #f9fafb;
       }
 
-      .container {
-        max-width: 700px;
-        margin: auto;
-        background: white;
+      .page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 38% 62%;
+      }
+
+      /* LEFT SIDE */
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        background:
+          linear-gradient(rgba(11, 18, 32, 0.55), rgba(11, 18, 32, 0.85)),
+          #172338;
+        border-right: 1px solid #26354d;
       }
 
-      h1 {
-        color: #2563eb;
-        font-size: 42px;
-        margin-bottom: 10px;
+      .portrait {
+        width: 260px;
+        height: 430px;
+        object-fit: cover;
+        border-radius: 22px;
+        border: 1px solid #52627a;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
       }
 
-      p {
+      .years {
+        margin-top: 28px;
+        font-family: Georgia, serif;
+        font-size: 24px;
+        letter-spacing: 5px;
+        color: #e5e7eb;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 220px;
+        margin: 18px auto;
+        color: #cbd5e1;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: #64748b;
+      }
+
+      .star {
         font-size: 18px;
-        line-height: 1.6;
       }
 
-      ul {
-        list-style: none;
-        padding: 0;
+      .legacy {
+        font-family: Georgia, serif;
+        font-size: 15px;
+        line-height: 1.8;
+        letter-spacing: 2px;
+        color: #aebbd0;
       }
 
-      li {
-        margin: 8px 0;
-      }
+      /* RIGHT SIDE */
 
-      a {
-        color: #2563eb;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      a:hover {
-        text-decoration: underline;
+      .right {
+        padding: 55px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .tag {
         display: inline-block;
-        background: #e0ecff;
-        color: #2563eb;
-        padding: 6px 12px;
+        width: fit-content;
+        padding: 7px 16px;
+        border: 1px solid #536b89;
         border-radius: 20px;
-        font-size: 14px;
-        margin-top: 15px;
+        color: #b8c7dc;
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      h1 {
+        margin: 18px 0 5px;
+        font-size: 58px;
+        letter-spacing: -2px;
+      }
+
+      .subtitle {
+        margin: 0 0 30px;
+        color: #9eacc1;
+        font-size: 18px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .card {
+        padding: 24px;
+        background: rgba(20, 31, 49, 0.8);
+        border: 1px solid #2d405b;
+        border-radius: 16px;
+      }
+
+      .card.wide {
+        grid-column: 1 / -1;
+      }
+
+      h2 {
+        margin: 0 0 15px;
+        font-size: 20px;
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: #bdc8d8;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #bdc8d8;
+        line-height: 1.8;
+      }
+
+      .quote {
+        margin: 30px auto 20px;
+        max-width: 650px;
+        text-align: center;
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 19px;
+        color: #d8e0eb;
+      }
+
+      footer {
+        text-align: center;
+        color: #66758a;
+        font-size: 12px;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 850px) {
+        .page {
+          grid-template-columns: 1fr;
+        }
+
+        .left {
+          padding: 35px 20px;
+          border-right: none;
+          border-bottom: 1px solid #26354d;
+        }
+
+        .portrait {
+          width: 220px;
+          height: 330px;
+        }
+
+        .right {
+          padding: 40px 20px;
+        }
+
+        h1 {
+          font-size: 45px;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .card.wide {
+          grid-column: auto;
+        }
       }
     </style>
-    ```
   </head>
 
   <body>
-    <div class="container">
-      <h1>Hello, World!</h1>
+    <main class="page">
+      <!-- LEFT PANEL -->
+      <section class="left">
+        <img
+          class="portrait"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk1eR2uMg0IvyA81FiN9uvzOVZiosL236ExyAY-vcSfMiMPd07WvgQVnSo&s=10"
+          alt="Charlie Kirk"
+        />
 
-      <p>Welcome to my <strong>Web Engineering Lab 1</strong>.</p>
+        <div class="years">1993 — 2025</div>
 
-      <p>
-        This is my first webpage deployed using
-        <strong>GitHub Pages</strong>.
-      </p>
+        <div class="divider">
+          <span class="star">★</span>
+        </div>
 
-      <span class="tag">HTML • Web Engineering • Lab 1</span>
+        <div class="legacy">
+          A voice for a generation.<br />
+          A legacy that lives on.
+        </div>
+      </section>
 
-      <h2>What I'm Learning</h2>
+      <!-- RIGHT PANEL -->
+      <section class="right">
+        <span class="tag">WEB ENGINEERING • LAB 1</span>
 
-      <ul>
-        <li>HTML Structure</li>
-        <li>Web Page Design</li>
-        <li>GitHub Pages Deployment</li>
-      </ul>
+        <h1>Kirkversy</h1>
 
-      <p>
-        Check out my
-        <a href="https://github.com/hamzaraheem06" target="_blank">GitHub</a>
-        to explore more projects.
-      </p>
-    </div>
+        <p class="subtitle">A small digital memorial for Charlie Kirk</p>
+
+        <div class="cards">
+          <!-- ABOUT -->
+          <article class="card">
+            <h2>Who Was Charlie Kirk?</h2>
+
+            <p>
+              Charlie Kirk was an American conservative political activist,
+              author, and media personality.
+            </p>
+
+            <p>
+              At 18, he co-founded Turning Point USA and became widely known for
+              campus debates, public speaking, and political commentary.
+            </p>
+          </article>
+
+          <!-- IDEAS -->
+          <article class="card">
+            <h2>His Ideas & Mottos</h2>
+
+            <ul>
+              <li>Freedom and individual responsibility</li>
+              <li>Political engagement among young people</li>
+              <li>Conservative and Christian values</li>
+              <li>“The best way to fight bad ideas is with better ideas.”</li>
+            </ul>
+          </article>
+
+          <!-- WHAT HAPPENED -->
+          <article class="card wide">
+            <h2>What Happened?</h2>
+
+            <p>
+              On September 10, 2025, Charlie Kirk was speaking at an event at
+              Utah Valley University in Orem, Utah, when he was fatally shot. He
+              was 31 years old.
+            </p>
+
+            <p>
+              His death received widespread attention and renewed discussions
+              about political violence in the United States.
+            </p>
+
+            <strong><i>He is with tung tung now. ☝️</i></strong>
+          </article>
+        </div>
+
+        <div class="quote">
+          “The best way to fight bad ideas is with better ideas.”
+        </div>
+
+        <footer>Created for Web Engineering Lab 1 · HTML & CSS</footer>
+      </section>
+    </main>
   </body>
 </html>
